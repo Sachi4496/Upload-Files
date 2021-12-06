@@ -10,6 +10,6 @@ app.use(express.json());
 
 app.use("/users",userController);
 
-app.use("/users/multiple",galleryController);
+app.use("/users/gallery",galleryController);
 
 module.exports = app;

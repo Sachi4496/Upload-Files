@@ -15,6 +15,7 @@ router.post("/",upload.any("pictures"), async (req, res) => {
         const gallery = await Gallery.create({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
+            user_id: req.body.user_id,
             pictures: filePaths,
         });
 
@@ -26,7 +27,8 @@ router.post("/",upload.any("pictures"), async (req, res) => {
 
 router.get('',async (req, res) => {
     try {
-        const gallery = await Gallery.find().populate({path: "user_id", select : "first_name last_name profile_pic"}).lean().exec();
+        // const gallery = await Gallery.find().populate({path: "user_id", select: "first_name last_name"}).lean().exec();
+        const gallery = await Gallery.find().lean().exec();
         res.status(201).send(gallery);
     }catch(e){
         return res.status(500).json({ status:"failed",message: e.message });

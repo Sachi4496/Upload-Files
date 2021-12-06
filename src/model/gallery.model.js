@@ -5,7 +5,7 @@ const gallerySchema = new mongoose.Schema({
     user_id : {
         type: mongoose.Schema.Types.ObjectId,
         ref : "user",
-        required: false
+        required: true
     }
 }, {
     versionKey: false,
