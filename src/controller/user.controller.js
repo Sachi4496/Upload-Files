@@ -22,12 +22,12 @@ const fs = require('fs');
 //     }
 // });
 
-router.post("", upload.single("profile_image"), async (req, res) => {
+router.post("", upload.single("profile_pic"), async (req, res) => {
     try {
         const user = await User.create({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
-            profile_image: req.file.path
+            profile_pic: req.file.path
         });
         res.status(200).send(user);
     } catch (e) {

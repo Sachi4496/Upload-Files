@@ -8,14 +8,14 @@ const router = express.Router();
 
 const fs = require('fs');
 
-router.post("/multiple",upload.any("profilImage"), async (req, res) => {
+router.post("/",upload.any("pictures"), async (req, res) => {
 
     const filePaths = req.files.map((file)=> file.path);
     try{
         const gallery = await Gallery.create({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
-            profile_pic: filePaths,
+            pictures: filePaths,
         });
 
         return res.status(201).json({gallery})
